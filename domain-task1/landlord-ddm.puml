@@ -1,0 +1,61 @@
+@startuml
+
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "Location" as location {
+    * **id : int** <<generated>>
+    --
+    type : string
+    address_line : text
+}
+
+
+entity "Apartment" as apartment {
+    * **id : int** <<generated>>
+    --
+    number : int
+    for_rent: boolean
+    location_id: int <<FK:location>>
+    owner_id: int <<FK:actor>>
+
+}
+
+entity "Actor" as actor {
+    * **id : int** <<generated>>
+    --
+    name: text
+
+}
+
+entity "Contract" as contract {
+    * **id : int** <<generated>>
+    --
+    * start_date : datetime
+    end_date : datetime
+
+}
+
+entity "LandLordsRelation" as apartmentContract_rel {
+    * apartment_id : int <<FK:apartment>>
+    * contract_id : int <<FK:contract>>
+}
+
+entity "TenantsRelation" as actorContract_rel {
+    * actor_id : int <<FK:actor>>
+    * contract_id : int <<FK:contract>>
+}
+
+actor ||..o{ apartment
+location ||..|{ apartment
+apartment |o..o{ apartmentContract_rel
+contract |o..o{ apartmentContract_rel
+
+actor |o..o{ actorContract_rel
+contract |o...o{ actorContract_rel
+
+
+
+@enduml

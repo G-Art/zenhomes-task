@@ -105,7 +105,7 @@ As a result, it's expected that your system will expose the following API:
     
 **Architecture**
 
-![diagram data source is "coding-task2/architecture.puml"](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/G-Art/zenhomes-task/master/coding-task2/arhitercture.puml)
+![diagram data source is "coding-task2/architecture.puml"](http://www.plantuml.com/plantuml/proxy?&src=https://raw.githubusercontent.com/G-Art/zenhomes-task/master/coding-task2/architecture.puml)
 
 Web application contain two modules core and web-counter-api.
 Based on Spring framework and java 11, build system is Gradle.
@@ -113,7 +113,7 @@ Based on Spring framework and java 11, build system is Gradle.
 Following diagram display how application works 
 *Note:* instead of DB i use mock repository
 
-![diagram data source is "coding-task2/sequence.puml"](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/G-Art/zenhomes-task/master/coding-task2/sequence.puml)
+![diagram data source is "coding-task2/sequence.puml"](http://www.plantuml.com/plantuml/proxy?&src=https://raw.githubusercontent.com/G-Art/zenhomes-task/master/coding-task2/sequence.puml)
 
 
 **Build and deployment**

@@ -58,6 +58,7 @@ ERD description:
 # **Task 2: Architecture & Coding**
 
 Repository name: coding-task2
+
 You have to design and build the system that allows to receive and collect data about energy consumption
 from different villages. As a result, your system should, on demand, give outthe consumption report per
 village forthe last 24h. As a result of your work, we expectthe end-to-end design ofthe system (a model,
@@ -67,6 +68,7 @@ would be nice if you implementthis solution using it. However, if you have a pro
 complexity),then you can share it with us as well, instead of coding this task. In this case please create a
 statement/document explaining the problem thatis being solved with it,this project should speaks for
 your code skills :-).
+
 Considerthat your system has anAPIthatis called by electricity counters:
 
     POST /counter_callback
@@ -108,9 +110,11 @@ As a result, it's expected that your system will expose the following API:
 ![diagram data source is "coding-task2/architecture.puml"](http://www.plantuml.com/plantuml/proxy?&src=https://raw.githubusercontent.com/G-Art/zenhomes-task/master/coding-task2/architecture.puml)
 
 Web application contain two modules core and web-counter-api.
+
 Based on Spring framework and java 11, build system is Gradle.
 
-Following diagram display how application works 
+Following diagram display how application works.
+
 *Note:* instead of DB i use mock repository
 
 ![diagram data source is "coding-task2/sequence.puml"](http://www.plantuml.com/plantuml/proxy?&src=https://raw.githubusercontent.com/G-Art/zenhomes-task/master/coding-task2/sequence.puml)

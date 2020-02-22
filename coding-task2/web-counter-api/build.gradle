@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'war'
+
+    id 'org.springframework.boot' version '2.0.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+}
+
+group 'com.zenhomes'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation  project(":coding-task2:core")
+
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    implementation 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    components {
+        withModule('org.springframework:spring-beans') {
+            allVariants {
+                withDependencyConstraints {
+                    // Need to patch constraints because snakeyaml is an optional dependency
+                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
+                }
+            }
+        }
+    }
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

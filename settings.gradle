@@ -1,3 +1,5 @@
 rootProject.name = 'java-test-zenhomes'
 include 'domain-task1'
+include 'coding-task2:core'
+include 'coding-task2:web-counter-api'
 

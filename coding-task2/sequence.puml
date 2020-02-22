@@ -1,0 +1,44 @@
+@startuml
+actor Client
+control App
+database DB
+collections "Counter Server"
+
+alt send data
+    Client -> App : counter_callback[POST]
+    App -> "Counter Server" : request counter by id
+
+
+    else success case
+    "Counter Server" --> App : response counter info
+
+    App --> App : "retrieve village id from\n counter info"
+
+    App -> DB : get village by id
+    alt found village
+        DB --> App : return requester object
+        App --> App : add consumption
+    else not found village
+        DB --> App : return null
+        App --> App : create new village
+        App --> App : add consumption
+    end
+
+    App -> DB : save village
+    else response error
+    "Counter Server" --> App : return error
+    App --> Client : sand 404 error
+
+end
+
+group request report
+    Client -> App : consumption_report?duration={}[GET]
+
+    App -> DB : get all villages
+    App --> App : "process village\n consumption data"
+
+    App --> Client : return report
+
+end
+
+@enduml

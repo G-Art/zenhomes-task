@@ -1,0 +1,14 @@
+@startuml
+
+cloud {
+    interface "Counter Server" as counter
+}
+
+node "Servlet Container" {
+    package "Application" {
+        [core.jar] --> [web-counter-api.jar]
+        [web-counter-api.jar] ..> counter : use
+    }
+}
+
+@enduml

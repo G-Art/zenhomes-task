@@ -16,10 +16,12 @@ entity "Location" as location {
 entity "Apartment" as apartment {
     * **id : int** <<generated>>
     --
+    * location_id: int <<FK:location>>
+    * owner_id: int <<FK:actor>>
+
     number : int
     for_rent: boolean
-    location_id: int <<FK:location>>
-    owner_id: int <<FK:actor>>
+    price: decimal
 
 }
 
@@ -36,9 +38,11 @@ entity "Contract" as contract {
     * start_date : datetime
     end_date : datetime
 
+    rent_price: decimal
+
 }
 
-entity "LandLordsRelation" as apartmentContract_rel {
+entity "ApartmentContractRelation" as apartmentContract_rel {
     * apartment_id : int <<FK:apartment>>
     * contract_id : int <<FK:contract>>
 }
